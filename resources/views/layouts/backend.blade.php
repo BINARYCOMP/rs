@@ -74,7 +74,23 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+        @if ($errors->any())
+        <section style="padding: 0 15px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>   
+        @endif
       <!--------------------------
         | Your Page Content Here |
         -------------------------->

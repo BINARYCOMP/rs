@@ -23,4 +23,7 @@ Route::prefix('dashboard')->group(function(){
 
 Route::prefix('Barang')->group(function(){
     Route::get('/','barang@index')->name('barang');
+    Route::get('/delete/{id}','barang@hapus')->name('barang.hapus');
+    Route::get('/edit/{id}','barang@edit_view')->name('barang.edit');
+    Route::post('/edit','barang@edit')->name('barang.edit.post');
 });

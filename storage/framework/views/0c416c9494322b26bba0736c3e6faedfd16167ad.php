@@ -33,8 +33,8 @@
                                 <td class="right"><?php echo e($sisa); ?></td>
                                 <td class="center">
                                     <a href="" class="btn btn-warning">Detail</a>
-                                    <a href="" class="btn btn-success">Edit</a>
-                                    <a href="" class="btn btn-danger">Hapus</a>
+                                    <a href="<?php echo e(route('barang.edit', ['id' => $row->bara_id])); ?>" class="btn btn-success">Edit</a>
+                                    <a href="<?php echo e(route('barang.hapus', ['id' => $row->bara_id])); ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

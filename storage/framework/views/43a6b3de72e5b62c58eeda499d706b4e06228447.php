@@ -75,7 +75,23 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+        <?php if($errors->any()): ?>
+        <section style="padding: 0 15px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+                        <ul>
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>   
+        <?php endif; ?>
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
