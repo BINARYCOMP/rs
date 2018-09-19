@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model_barang;
+use Validator;
 
 class Barang extends Controller
 {
@@ -53,5 +54,29 @@ class Barang extends Controller
         $this->model->hapus($id);
         return redirect()->route('barang')
             ->withErrors('Data berhasil dihapus');
+    }
+    public function tambah(){
+        $data = array(
+            'title' => 'Barang',
+            'header' => 'Tambah Barang',
+            'desc' => 'Form penambahan barang',
+            'act' => 'CREATE'
+        );
+        return view($this->viewPrefix.".form", $data);
+    }
+    public function tambah_post(Request $request){
+        $validator = Validator::make($request->all(), [
+            'txtNama' => 'required',
+            'txtJumlah' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route($this->viewPrefix . '.store'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $requestData = $request->all();
+        $this->model->store(['bara_name' => $requestData['txtNama'], 'bara_jumlah' => $requestData['txtJumlah']]);
+        return redirect()->route('barang');
     }
 }
