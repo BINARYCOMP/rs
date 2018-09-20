@@ -27,10 +27,12 @@
                         <tbody>
                             <?php
                                 $no = 0 ;
-                                $sisa = 1;
                             ?>
                             @foreach($model as $row)
-                            <?php $no++ ?>
+                            <?php 
+                                $no++;
+                                $sisa = $modeling->getSisa($row->bara_id, $row->bara_jumlah);
+                            ?>
                             <tr>
                                 <td>{{ $no }}</td>
                                 <td>{{ $row->bara_name }}</td>

@@ -32,4 +32,9 @@ Route::prefix('Barang')->group(function(){
 
 Route::prefix('Entry')->group(function(){
     Route::get('/', 'entry@index')->name('entry');
+    Route::get('/delete/{id}','entry@hapus')->name('entry.hapus');
+    Route::get('/edit/{id}','entry@edit_view')->name('entry.edit');
+    Route::get('/tambah-entry','entry@tambah')->name('entry.store');
+    Route::post('/tambah-entry','entry@tambah_post')->name('entry.store.post');
+    Route::post('/update-entry{id}','entry@edit_post')->name('entry.update.post');
 });

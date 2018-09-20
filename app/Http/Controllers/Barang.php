@@ -19,6 +19,7 @@ class Barang extends Controller
             'header'    => 'List Barang',
             'desc'      => 'Data semua barang',
             'model'     => $this->model->getAllData(),
+            'modeling'  => $this->model,
         );
         return view($this->viewPrefix.'.index', $data);
     }
@@ -43,8 +44,8 @@ class Barang extends Controller
     public function edit_view($id){
         $data = array(
             'title'     => 'Barang',
-            'header'    => 'List Barang',
-            'desc'      => 'Data semua barang',
+            'header'    => 'Ubah Barang',
+            'desc'      => 'Form ubah barang',
             'act'       => 'UPDATE',
             'model'     => $this->model->getAllData(),
         );

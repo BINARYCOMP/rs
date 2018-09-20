@@ -6,16 +6,20 @@
             <div class="box box-success">
                 <div class="box-header">
                     <div class="box-title">
-                        Form Barang
+                        Form Entry
                     </div>
                 </div>
                 <div class="box-body">
-                    <form action="{{route('barang.store.post')}}" method="POST">
+                    <form action="{{route('entry.store.post')}}" method="POST">
                         @csrf
                         <div class="box-body">
                             <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" required name="txtNama" value="{{old('txtNama')}}" class="form-control" placeholder="Masukan Nama Barang">
+                                <select required class="form-control" name="cmbBarang">
+                                    <option value="0">=== Pilih Barang ===</option>
+                                    @foreach($barang as $row)
+                                        <option value="{{$row->bara_id}}">{{ $row->bara_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>    
                             <div class="form-group">
                                 <label>Jumlah</label>

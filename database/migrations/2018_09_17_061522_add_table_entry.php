@@ -14,6 +14,13 @@ class AddTableEntry extends Migration
     public function up()
     {
         //
+        Schema::create('entry', function (Blueprint $table) {
+            $table->increments('entr_id');
+            $table->string('entr_bara_id');
+            $table->integer('entr_jumlah');
+            $table->date('entr_date');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +31,6 @@ class AddTableEntry extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('entry');
     }
 }

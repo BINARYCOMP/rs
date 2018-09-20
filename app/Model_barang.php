@@ -24,4 +24,11 @@ class Model_barang extends Model
         return DB::table('barang')
             ->insert($data);
     }
+    public function getSisa($id, $jumlah){
+        $query = DB::table('entry')
+            ->where('entr_bara_id','=',$id)
+            ->sum('entr_jumlah');
+        $return = $jumlah - $query;
+        return $return;
+    }
 }
