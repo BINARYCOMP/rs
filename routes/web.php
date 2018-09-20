@@ -26,4 +26,10 @@ Route::prefix('Barang')->group(function(){
     Route::get('/delete/{id}','barang@hapus')->name('barang.hapus');
     Route::get('/edit/{id}','barang@edit_view')->name('barang.edit');
     Route::post('/edit','barang@edit')->name('barang.edit.post');
+    Route::get('/tambah-barang','barang@tambah')->name('barang.store');
+    Route::post('/tambah-barang','barang@tambah_post')->name('barang.store.post');
+});
+
+Route::prefix('Entry')->group(function(){
+    Route::get('/', 'entry@index')->name('entry');
 });

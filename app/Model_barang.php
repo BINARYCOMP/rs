@@ -20,4 +20,8 @@ class Model_barang extends Model
             ->where('bara_id','=',$id)
             ->update(['bara_name' => $nama , 'bara_jumlah' => $jumlah]);
     }
+    public function store($data){
+        return DB::table('barang')
+            ->insert($data);
+    }
 }

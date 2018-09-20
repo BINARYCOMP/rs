@@ -35,10 +35,9 @@ class login extends Controller
                         ->withInput();
         }
         $requestData    = $request->all();
-        $model  = $this->model->login(
-            $requestData['txtEmail'], 
-            $requestData['txtPassword']
-        );
+        
+        $model  = $this->model->login($requestData['txtEmail'] , $requestData['txtPassword']);
+        
         if(isset($model[0]->id)){
             return redirect()->route('dashboard');;
         }else{
