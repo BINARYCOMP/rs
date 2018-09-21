@@ -25,19 +25,19 @@ class Barang extends Controller
     }
     public function edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'txtNama' => 'required|max:255',
-            'txtJumlah' => 'required|number',
+            'txtNama' => 'required',
+            'txtJumlah' => 'required',
         ]);
         if($validator->fails()){
             return redirect(route($this->viewPrefix.'.create', ['bara_id' => $request->bara_id]))
                 ->withErrors($validator)
                 ->withInput();
         }
-        $reqeustData = $request->all();
+        $requestData = $request->all();
         $store = $this->model->edit(
-            $requestData['bara_id'],
-            $requestData['bara_name'],
-            $requestData['bara_jumlah']
+            $id,
+            $requestData['txtNama'],
+            $requestData['txtJumlah']
         );
         return redirect()->route('barang');
     }
@@ -47,9 +47,9 @@ class Barang extends Controller
             'header'    => 'Ubah Barang',
             'desc'      => 'Form ubah barang',
             'act'       => 'UPDATE',
-            'model'     => $this->model->getAllData(),
+            'model'     => $this->model->getDataById($id),
         );
-        return view($this->viewPrefix.'.form', $data);
+        return view($this->viewPrefix.'.form_edit', $data);
     }
     public function hapus($id){
         $this->model->hapus($id);

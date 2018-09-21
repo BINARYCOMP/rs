@@ -38,8 +38,8 @@
                                 <td>{{ $row->bara_name }}</td>
                                 <td class="right">{{ $row->entr_jumlah }}</td>
                                 <td class="center">
-                                    <a href="" class="btn btn-warning">Detail</a>
-                                    <a href="{{route('entry.edit', ['id' => $row->entr_id])}}" class="btn btn-success">Edit</a>
+                                    <a href="" class="btn btn-primary">Detail</a>
+                                    <a href="{{route('entry.edit', ['id' => $row->entr_id])}}" class="btn btn-warning">Edit</a>
                                     <a href="{{route('entry.hapus', ['id' => $row->entr_id])}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>

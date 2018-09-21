@@ -31,4 +31,9 @@ class Model_barang extends Model
         $return = $jumlah - $query;
         return $return;
     }
+    public function getDataById($id){
+        return DB::table('barang')
+            ->where('bara_id','=',$id)
+            ->get();
+    }
 }

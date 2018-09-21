@@ -18,7 +18,7 @@
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href=" {{ asset('dist/css/skins/skin-black-light.min.css') }}">
+  <link rel="stylesheet" href=" {{ asset('dist/css/skins/skin-black.min.css') }}">
 
   <style>
     .right{
@@ -53,6 +53,13 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-green sidebar-mini">
+<?php
+    if(null == session('status')){
+    ?>
+        <script>window.location='/'</script>
+    <?php
+        }
+?>
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -78,9 +85,9 @@ desired effect
         <section style="padding: 0 15px">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="alert alert-success alert-dismissible">
+                    <div class="alert alert-warning alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+                        <h4><i class="icon fa fa-warning"></i> Pemberitahuan!</h4>
                         <ul>
                             @foreach ($errors->all() as $error)
                               <li>{{ $error }}</li>

@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', 'login@index');
+Route::get('/', 'login@index')->name('login');
+Route::get('/logout', 'login@logout')->name('logout');
+Route::get('/change-password','login@changePassword')->name('login.reset');
+Route::post('/change-password','login@changePasswordPost')->name('login.reset.post');
+
 
 Route::prefix('authentication')->group(function(){
     Route::post('/login','login@auth')->name('auth.login.post');
@@ -28,6 +32,7 @@ Route::prefix('Barang')->group(function(){
     Route::post('/edit','barang@edit')->name('barang.edit.post');
     Route::get('/tambah-barang','barang@tambah')->name('barang.store');
     Route::post('/tambah-barang','barang@tambah_post')->name('barang.store.post');
+    Route::post('/update-barang{id}','barang@edit')->name('barang.update.post');
 });
 
 Route::prefix('Entry')->group(function(){
@@ -37,4 +42,8 @@ Route::prefix('Entry')->group(function(){
     Route::get('/tambah-entry','entry@tambah')->name('entry.store');
     Route::post('/tambah-entry','entry@tambah_post')->name('entry.store.post');
     Route::post('/update-entry{id}','entry@edit_post')->name('entry.update.post');
+});
+
+Route::prefix('report')->group(function(){
+    Route::get('/','report@index')->name('report');
 });

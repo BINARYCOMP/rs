@@ -39,11 +39,53 @@ class login extends Controller
         $model  = $this->model->login($requestData['txtEmail'] , $requestData['txtPassword']);
         
         if(isset($model[0]->id)){
+            session([
+                'userId'=> $model[0]->id,
+                'name' => $model[0]->user_name,
+                'email' => $model[0]->user_email,
+                'status' => 'Login'
+            ]);
             return redirect()->route('dashboard');;
         }else{
             return redirect('/')
                         ->withErrors('Username atau Password salah')
                         ->withInput();
+        }
+    }
+    public function logout(Request $request){
+        $request->session()->flush();
+        return redirect('/');
+    }
+    public function changePassword(){
+        $data = array(
+            'title'     => 'Profile',
+            'header'    => 'Ganti Password',
+            'desc'      => 'Perbaharui kata sandi anda',
+        );
+        return view('resetPassword', $data);
+    }
+    public function changePasswordPost(Request $request){
+        $validator = Validator::make($request->all(), [
+            'txtBaru' => 'required',
+            'txtLama' => 'required',
+        ]);
+        if($validator->fails()){
+            return redirect(route('login.reset'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $requestData = $request->all();
+        $store = $this->model->resetPassword(
+            session()->get('userId'),
+            $requestData['txtBaru'],
+            $requestData['txtLama']
+        );
+        if($store != 1){
+            return redirect(route('login.reset'))
+                ->withErrors('Password Lama Salah');
+        }else{
+            return redirect(route('logout'))
+                ->withErrors(['Password sudah di perbaharui','Silahkan masuk lagi']);                    
         }
     }
 }
