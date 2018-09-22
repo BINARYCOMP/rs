@@ -46,4 +46,5 @@ Route::prefix('Entry')->group(function(){
 
 Route::prefix('report')->group(function(){
     Route::get('/','report@index')->name('report');
+    Route::post('/','report@search')->name('report.post');
 });
