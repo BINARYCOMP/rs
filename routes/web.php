@@ -48,3 +48,12 @@ Route::prefix('report')->group(function(){
     Route::get('/','report@index')->name('report');
     Route::post('/','report@search')->name('report.post');
 });
+
+Route::prefix('user')->group(function (){
+    Route::get('/', 'user@index')->name('user');
+    Route::get('/delete/{id}','user@hapus')->name('user.hapus');
+    Route::get('/edit/{id}','user@edit_view')->name('user.edit');
+    Route::get('/tambah-user','user@tambah')->name('user.store');
+    Route::post('/tambah-user','user@tambah_post')->name('user.store.post');
+    Route::post('/update-user{id}','user@edit_post')->name('user.update.post');
+});
