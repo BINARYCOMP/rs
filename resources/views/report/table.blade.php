@@ -1,6 +1,6 @@
 <div class="box">
     <div class="box-body">
-        <table class="table table-bordered table-hovered" id="default">
+        <table class="table table-bordered table-hovered" id="report">
             <thead>
                 <tr>
                     <th>No</th>

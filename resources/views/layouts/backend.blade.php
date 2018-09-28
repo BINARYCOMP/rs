@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Rumah Sakit | {{ $title }}</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href=" {{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href=" {{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href=" {{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href=" {{ asset('dist/css/AdminLTE.min.css') }}">
-   <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rumah Sakit | {{ $title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href=" {{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href=" {{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href=" {{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href=" {{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/datatables.net/css/dataTables.bootstrap.min.css')}}">
+    
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
@@ -208,9 +210,21 @@ desired effect
 <!-- DataTables -->
 <script src=" {{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src=" {{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    
+<script src=" {{ asset('bower_components/datatables.net-bs/js/buttons.html5.min.js') }}"></script>
+<script src=" {{ asset('bower_components/datatables.net-bs/js/buttons.print.min.js') }}"></script>
+<script src=" {{ asset('bower_components/datatables.net-bs/js/dataTables.buttons.min.js') }}"></script>
+<script src=" {{ asset('bower_components/datatables.net-bs/js/buttons.flash.min.js') }}"></script>
+
+<!--
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+-->
 <script>
   $(function () {
-    $('#default').DataTable()
+    $('#default').DataTable();
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
@@ -218,8 +232,14 @@ desired effect
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
-    })
-  })
+    });
+    $('#report').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    });
+  });
 </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
