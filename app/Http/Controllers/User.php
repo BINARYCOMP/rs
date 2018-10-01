@@ -38,6 +38,8 @@ class User extends Controller
         	'user_password' => $password , 
         	'user_address' => $requestData['txtAlamat'] , 
         	'user_phone' => $requestData['txtPhone'] , 
+            'user_nip' => $requestData['txtNip'],
+            'user_role'=> $requestData['cmbRole']
         	);
         $store = $this->model->edit(
             $id,
