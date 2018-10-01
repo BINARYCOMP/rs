@@ -33,11 +33,13 @@ class User extends Controller
         	$password = $realPassword[0]->user_password;
         }
         $data = array(
-        	'user_email' => $requestData['txtEmail'] , 
+        	'user_username' => $requestData['txtUsername'] , 
         	'user_name' => $requestData['txtNama'] , 
         	'user_password' => $password , 
         	'user_address' => $requestData['txtAlamat'] , 
         	'user_phone' => $requestData['txtPhone'] , 
+            'user_nip' => $requestData['txtNip'],
+            'user_role'=> $requestData['cmbRole']
         	);
         $store = $this->model->edit(
             $id,
@@ -72,11 +74,13 @@ class User extends Controller
     public function tambah_post(Request $request){
         $requestData = $request->all();
         $data = array(
-        	'user_email' => $requestData['txtEmail'] , 
+        	'user_username' => $requestData['txtUsername'] , 
         	'user_name' => $requestData['txtNama'] , 
         	'user_password' => $requestData['txtPassword'] , 
         	'user_address' => $requestData['txtAlamat'] , 
         	'user_phone' => $requestData['txtPhone'] , 
+            'user_role' => $requestData['cmbRole'],
+            'user_nip' => $requestData['txtNip']
         	);
         $this->model->store($data);
         return redirect()->route('user');

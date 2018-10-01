@@ -52,7 +52,7 @@
     <form action="{{ route('auth.login.post') }}" method="post">
       @csrf
       <div class="form-group has-feedback">
-        <input type="email" name="txtEmail" value="{{ old('txtEmail') }}" class="form-control" placeholder="Email">
+        <input type="text" name="txtUsername" value="{{ old('txtUsername') }}" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

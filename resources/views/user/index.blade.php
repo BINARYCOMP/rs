@@ -18,29 +18,24 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Email</th>
+                                <th>Username</th>
                                 <th>Nama</th>
                                 <th>Nomor HP</th>
                                 <th>Alamat</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                $no = 0 ;
-                            ?>
                             @foreach($model as $row)
-                            <?php 
-                                $no++;
-                            ?>
                             <tr>
-                                <td>{{ $no }}</td>
-                                <td>{{ $row->user_email }}</td>
+                                <td>{{ $row->user_nip }}</td>
+                                <td>{{ $row->user_username }}</td>
                                 <td>{{ $row->user_name }}</td>
                                 <td>{{ $row->user_phone }}</td>
                                 <td>{{ $row->user_address }}</td>
+                                <td>{{ $row->user_role }}</td>
                                 <td class="center">
-                                    <a href="" class="btn btn-primary">Detail</a>
                                     <a href="{{route('user.edit', ['id' => $row->id])}}" class="btn btn-warning">Edit</a>
                                     <a href="{{route('user.hapus', ['id' => $row->id])}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" class="btn btn-danger">Hapus</a>
                                 </td>

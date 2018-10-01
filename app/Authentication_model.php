@@ -7,9 +7,9 @@ use DB;
 
 class Authentication_model extends Model
 {
-    public function login($email,$password){
+    public function login($username,$password){
         $query = DB::table('users')
-            ->where('user_email','=',$email)
+            ->where('user_username','=',$username)
             ->where('user_password','=',$password)
             ->get();
         return $query;

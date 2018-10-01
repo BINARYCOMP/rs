@@ -14,12 +14,16 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" required name="txtEmail" value="{{old('txtEmail')}}" class="form-control" placeholder="Masukan Email User">
+                                <label>Username</label>
+                                <input type="username" required name="txtUsername" value="{{old('txtUsername')}}" class="form-control" placeholder="Masukan Username User">
                             </div> 
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" required name="txtPassword" value="{{old('txtPassword')}}" class="form-control" placeholder="Masukan Password User">
+                            </div> 
+                            <div class="form-group">
+                                <label>NIP</label>
+                                <input type="number" required name="txtNip" value="{{old('txtNip')}}" class="form-control" placeholder="Masukan NIP User">
                             </div>    
                             <div class="form-group">
                                 <label>Nama</label>
@@ -32,7 +36,14 @@
                             <div class="form-group">
                                 <label>Alamat</label>
                                 <textarea required name="txtAlamat" class="form-control">{{old('txtAlamat')}}</textarea>
-                            </div>    
+                            </div> 
+                            <div class="form-group">
+                                <label>Hak Akses (Role)</label>
+                                <select name="cmbRole" class="form-control">
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="USER">USER</option>
+                                </select>
+                            </div>   
                         </div>
                         <div class="box-footer">
                             <input type="submit" class="btn btn-success" value="Simpan">    

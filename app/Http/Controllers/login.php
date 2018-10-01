@@ -26,7 +26,7 @@ class login extends Controller
     }
     public function auth(Request $request){
         $validator = Validator::make($request->all(), [
-            'txtEmail'      => 'required',
+            'txtUsername'      => 'required',
             'txtPassword'   => 'required',
         ]);
         if ($validator->fails()) {
@@ -36,13 +36,14 @@ class login extends Controller
         }
         $requestData    = $request->all();
         
-        $model  = $this->model->login($requestData['txtEmail'] , $requestData['txtPassword']);
+        $model  = $this->model->login($requestData['txtUsername'] , $requestData['txtPassword']);
         
         if(isset($model[0]->id)){
             session([
                 'userId'=> $model[0]->id,
                 'name' => $model[0]->user_name,
-                'email' => $model[0]->user_email,
+                'username' => $model[0]->user_username,
+                'role' => $model[0]->user_role,
                 'status' => 'Login'
             ]);
             return redirect()->route('dashboard');;
