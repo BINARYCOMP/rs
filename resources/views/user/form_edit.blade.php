@@ -14,8 +14,8 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" required name="txtEmail" value="{{$model[0]->user_email}}" class="form-control" placeholder="Masukan Email User">
+                                <label>Username</label>
+                                <input type="username" required name="txtUsername" value="{{$model[0]->user_username}}" class="form-control" placeholder="Masukan Username User">
                             </div> 
                             <div class="form-group">
                                 <label>Password</label>
